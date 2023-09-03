@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 
 int main() {
   // check if a character is alphanum
@@ -165,5 +166,11 @@ int main() {
   std::cout << sizeof(banana2) << std::endl;
   std::cout << std::strlen(banana2) << std::endl;
   std::cout << banana2 << std::endl;
+
+  // std::string
+  std::string empty; // empty string
+  std::string planet {"Earth"};
+  std::string greeting {"Hello there", 5}; // take first 5 characters
+  std::string FiveAs {5, 'A'};
   return 0;
 }
