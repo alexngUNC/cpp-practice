@@ -1,7 +1,46 @@
 #include <iostream>
+#include <cstring>
+#include <concepts>
 
 // function template - types have to be the same
 template <typename T> T maximum(T a, T b);
+
+// pass by reference
+template <typename T> const T& max2(const T& a, const T& b);
+
+// template specialization
+template <>
+const char* maximum<const char*> (const char* a, const char* b);
+
+// concept for type restriction
+/* syntax 1
+template <typename T> 
+requires std::integral<T>
+T add (T a, T b) {
+  return a + b;
+} 
+*/
+
+//syntax 2
+template <std::integral T>
+T add(T a, T b) {
+  return a + b;
+}
+
+/* syntax for using auto for parameters and return type
+auto add(std::integral auto a, std::integral auto b) {
+  return a + b;
+}
+*/
+
+// syntax 4
+/*
+template <typename T>
+T add(T a, T b) requires std::integral<T> {
+  return a + b;
+}
+*/
+
 
 int main() {
 
@@ -61,10 +100,46 @@ int main() {
   double d2 {3.99};
   std::cout << "max(c2, d2): " << maximum(c2, d2) << std::endl;
   
+  // template type deduction: explicitly say the type, implicit conversion
+  std::cout << maximum<float>(c2, d2) << std::endl;
+
+  // pass by reference example
+  double a2 {23.5};
+  double b2 {51.2};
+  std::cout << "Out &a2: " << &a2 << std::endl;
+  double max1 = max2(a2, b2);
+  std::cout << "max1: " << max1 << std::endl;
+
+  /*
+  // return max string using specialization and string type deducing
+  char* pChar1 {"car"};
+  char* pChar2 {"boat"};
+  char* maxString = maximum(pChar1, pChar2);
+  std::cout << "maxString: " << maxString << std::endl;
+  */
+
+
+  /*========Concepts=======*/
+  int b_0 {11};
+  int b_1 {5};
+  auto result_b = add(b_0, b_1);
+  std::cout << "result_b: " << result_b << std::endl;
   return 0;
 }
 
 // template implementation
 template <typename T> T maximum(T a, T b) {
   return (a > b) ? a : b;
+}
+
+// pass by reference
+template <typename T> const T& max2(const T& a, const T& b) {
+  std::cout << "In &a: " << &a << std::endl;
+  return (a > b) ? a : b;
+}
+
+// template specialization for char*
+template<>
+const char* maximum<const char*> (const char* a, const char* b) {
+  return (std::strcmp(a, b) > 0) ? a : b;
 }
