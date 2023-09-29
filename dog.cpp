@@ -59,6 +59,7 @@ Dog* Dog::setAge(int age) {
   }
   return this;
 }
+
 int main() {
   Dog* dog = new Dog("Bailey", "shepherd", 7);
   std::cout << dog->getName() << "'s age: " << dog->getAge() << std::endl;
