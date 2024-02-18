@@ -4,3 +4,5 @@
 unique_ptr.dSYM
 SmartPointers/shared_ptr.dSYM/Contents/Info.plist
 SmartPointers/shared_ptr.dSYM/Contents/Resources/DWARF/shared_ptr
+SmartPointers/stack_shared_ptr.dSYM/Contents/Info.plist
+SmartPointers/stack_shared_ptr.dSYM/Contents/Resources/DWARF/stack_shared_ptr
