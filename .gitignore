@@ -2,3 +2,5 @@
 .vscode
 .DS_Store
 unique_ptr.dSYM
+SmartPointers/shared_ptr.dSYM/Contents/Info.plist
+SmartPointers/shared_ptr.dSYM/Contents/Resources/DWARF/shared_ptr
